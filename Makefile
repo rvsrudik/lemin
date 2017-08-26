@@ -1,0 +1,56 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: vrudenko <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2016/11/28 14:19:32 by vrudenko          #+#    #+#              #
+#    Updated: 2016/11/29 18:04:45 by vrudenko         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = lem-in
+
+SRC = main.c \
+        help_func/ft_strchr.c \
+        help_func/ft_strdel.c \
+        help_func/ft_strdup.c \
+        help_func/ft_strjoin.c \
+        help_func/ft_strnew.c \
+        help_func/ft_strlen.c \
+        help_func/get_next_line.c \
+        help_func/ft_strcpy.c \
+        ft_read_input.c \
+
+
+OBJ = main.o \
+        help_func/ft_strchr.o \
+        help_func/ft_strdel.o \
+        help_func/ft_strdup.o \
+        help_func/ft_strjoin.o \
+        help_func/ft_strnew.o \
+        help_func/ft_strlen.o \
+        help_func/get_next_line.o \
+        help_func/ft_strcpy.o \
+        ft_read_input.o \
+
+CC = gcc
+INC = -Iincludes
+CFLAGS =
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(INC) -o $(NAME) $(OBJ)
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	rm -f $(OBJ)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
