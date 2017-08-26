@@ -10,6 +10,7 @@
 
 
 void	ft_read_input();
+void ft_error(void);
 
 
 

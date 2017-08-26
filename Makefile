@@ -22,6 +22,9 @@ SRC = main.c \
         help_func/get_next_line.c \
         help_func/ft_strcpy.c \
         ft_read_input.c \
+        ft_error.c \
+        help_func/ft_putstr.c \
+        help_func/ft_putchar.c \
 
 
 OBJ = main.o \
@@ -34,6 +37,9 @@ OBJ = main.o \
         help_func/get_next_line.o \
         help_func/ft_strcpy.o \
         ft_read_input.o \
+        ft_error.o \
+        help_func/ft_putstr.o \
+        help_func/ft_putchar.o \
 
 CC = gcc
 INC = -Iincludes
