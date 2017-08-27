@@ -9,9 +9,8 @@
 #include "get_next_line.h"
 
 
-void	ft_read_input();
+char 	**ft_read_input();
 void ft_error(void);
-
-
-
+void ft_check_input(char **input);
+int		ft_isdigit(int c);
 #endif

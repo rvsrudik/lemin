@@ -72,10 +72,8 @@ char **ft_add_line(char** input, char* line)
 	return (new_input);
 }
 
-
-void ft_read_input()
+char **ft_read_input()
 {
-
 	char *line;
 	char **input;
 
@@ -88,11 +86,5 @@ void ft_read_input()
 	}
 	int i = 0;
 
-	while (input[i] != 0)
-	{
-		printf("%s\n", input[i]);
-		i++;
-	}
-
-//	while(1);
+	return input;
 }

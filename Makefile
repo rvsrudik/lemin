@@ -25,6 +25,9 @@ SRC = main.c \
         ft_error.c \
         help_func/ft_putstr.c \
         help_func/ft_putchar.c \
+        ft_check_input.c \
+        help_func/ft_isdigit.c \
+        help_func/ft_atoi.c \
 
 
 OBJ = main.o \
@@ -40,6 +43,9 @@ OBJ = main.o \
         ft_error.o \
         help_func/ft_putstr.o \
         help_func/ft_putchar.o \
+        ft_check_input.o \
+        help_func/ft_isdigit.o \
+        help_func/ft_atoi.o \
 
 CC = gcc
 INC = -Iincludes
