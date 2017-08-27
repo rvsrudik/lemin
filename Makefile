@@ -28,6 +28,8 @@ SRC = main.c \
         ft_check_input.c \
         help_func/ft_isdigit.c \
         help_func/ft_atoi.c \
+        help_func/ft_strsplit.c \
+        help_func/ft_strncpy.o \
 
 
 OBJ = main.o \
@@ -46,6 +48,8 @@ OBJ = main.o \
         ft_check_input.o \
         help_func/ft_isdigit.o \
         help_func/ft_atoi.o \
+        help_func/ft_strsplit.o \
+        help_func/ft_strncpy.o \
 
 CC = gcc
 INC = -Iincludes

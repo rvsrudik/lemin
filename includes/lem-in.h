@@ -10,7 +10,9 @@
 
 
 char 	**ft_read_input();
-void ft_error(void);
-void ft_check_input(char **input);
-int		ft_isdigit(int c);
+void	ft_error(void);
+void 	ft_check_input(char **input);
+int		count_str_array(char **input);
+//int			ft_isdigit(int c);
+//char		**ft_strsplit(char const *s, char c)
 #endif
