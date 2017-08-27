@@ -22,7 +22,9 @@ int ft_is_end(char * line);
 int ft_is_rooms(char *line);
 int ft_is_links(char *line);
 void ft_free_str_array(char **line);
-
+char **ft_find_links(char **input);
+int ft_is_number(char *num);
+void ft_free_str_array(char **line);
 
 
 //int			ft_isdigit(int c);

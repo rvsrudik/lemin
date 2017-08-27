@@ -35,6 +35,10 @@ SRC = main.c \
         help_func/ft_strtrim.c \
         ft_find_number_of_ants.c \
         ft_find_rooms.c \
+        ft_find_links.c \
+        ft_is_correct_in_params.c \
+        help_func/ft_is_number.c \
+        help_func/ft_free_str_array.c \
 
 
 OBJ = main.o \
@@ -60,6 +64,10 @@ OBJ = main.o \
         help_func/ft_strtrim.o \
         ft_find_number_of_ants.o \
         ft_find_rooms.o \
+        ft_find_links.o \
+        ft_is_correct_in_params.o \
+        help_func/ft_is_number.o \
+        help_func/ft_free_str_array.o \
 
 CC = gcc
 INC = -Iincludes
