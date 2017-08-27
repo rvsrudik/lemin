@@ -125,7 +125,8 @@ int ft_is_links(char *line)
 
 int ft_is_start(char * line)
 {
-	if (!ft_strcmp(line, "#start"))
+//	printf("tut start\n");
+	if (!ft_strcmp(line, "##start"))
 	{
 		return (1);
 	}
@@ -134,7 +135,7 @@ int ft_is_start(char * line)
 
 int ft_is_end(char * line)
 {
-	if (!ft_strcmp(line, "#end"))
+	if (!ft_strcmp(line, "##end"))
 	{
 		return (1);
 	}
@@ -199,26 +200,108 @@ int ft_determ_number_of_rooms(char **input)
 	return (rooms);
 }
 
+
+
+char *ft_add_room(char *src, char *dst)
+{
+	int letters;
+	char **line;
+
+	line = ft_strsplit(dst, ' ');
+
+	letters = ft_strlen(line[0]);
+
+	src = ft_strnew(letters);
+
+	src = ft_strcpy(src, dst);
+	dst[0] = '#';
+
+//	printf("%p\n", src);
+
+	return (src);
+}
+
 char **ft_find_rooms(char **input)
 {
 	int i;
 	int number_of_rooms;
+	char **rooms;
+	int k;
 
 	i = 0;
+	k = 2;
 
 	number_of_rooms = ft_determ_number_of_rooms(input);
 
-	printf("%d\n", number_of_rooms);
+	rooms = (char**)malloc(sizeof(char**) * (number_of_rooms + 1));
+	while (i <= number_of_rooms)
+	{
+		rooms[i] = 0;
+		i++;
+	}
+	i = 0;
 
-//	while (!ft_is_links(input[i]))
+
+//	printf("%d\n", number_of_rooms);
+
+	while (!ft_is_links(input[i]))
+	{
+//		printf("[%d]\n", ft_is_start(input[i]));
+		if (ft_is_start(input[i]))
+		{
+			i++;
+			if (ft_is_rooms(input[i]))
+			{
+				if (!rooms[0])
+				{
+					rooms[0] =	ft_add_room(rooms[0], input[i]);
+//					printf("strat %s\n", rooms[0]);
+				}
+				else
+				{
+					rooms[k] =	ft_add_room(rooms[k], input[i]);
+//					printf("?? %s\n", rooms[k]);
+					k++;
+				}
+			}
+		}
+		else if (ft_is_end(input[i]))
+		{
+			i++;
+			if (ft_is_rooms(input[i]))
+			{
+				if (!rooms[1])
+				{
+					rooms[1] =	ft_add_room(rooms[1], input[i]);
+//					printf("end %s\n", rooms[1]);
+				}
+				else
+				{
+					rooms[k] = ft_add_room(rooms[k], input[i]);
+//					printf("?? %s\n", rooms[k]);
+					k++;
+				}
+			}
+		}
+		else if (ft_is_rooms(input[i]))
+		{
+			rooms[k] = ft_add_room(rooms[k], input[i]);
+//			printf("lol%s\n", rooms[k]);
+			k++;
+		}
+		i++;
+//		printf("%s\n", rooms[k-]);
+	}
+
+//	printf("SUKABLA\n");
+//	i = 0;
+//	while (rooms[i])
 //	{
-//		if (ft_is_start(input[i]))
-//		{
-//			i++;
-//		}
-//
+//		printf("%s\n", rooms[i]);
+//		i++;
 //	}
-	return 0;
+
+	return (rooms);
 }
 
 
@@ -231,16 +314,31 @@ void ft_check_input(char **input)
 	i = 0;
 
 	num_of_ants = ft_find_number_of_ants(input);
-//	rooms = ft_find_rooms(input);
+	rooms = ft_find_rooms(input);
 
-	printf("%d\n", ft_is_links("    asdf   -   23       32        "));
+//	printf("%d\n", ft_is_links("    asdf   -   23       32        "));
 
 
 //	printf("%d\n", num_of_ants);
 
-//	while (input[i] != 0)
-//	{
-//		printf("%s\n", input[i]);
-//		i++;
-//	}
+
+	while (rooms[i] != 0)
+	{
+		printf("%s\n", rooms[i]);
+		i++;
+	}
+
+	i = 0;
+
+	printf("///////////////////\n");
+
+
+	while (input[i] != 0)
+	{
+		printf("%s\n", input[i]);
+		i++;
+	}
+
+
+
 }

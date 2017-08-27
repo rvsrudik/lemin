@@ -29,7 +29,8 @@ SRC = main.c \
         help_func/ft_isdigit.c \
         help_func/ft_atoi.c \
         help_func/ft_strsplit.c \
-        help_func/ft_strncpy.o \
+        help_func/ft_strncpy.c \
+        help_func/ft_strcmp.c \
 
 
 OBJ = main.o \
@@ -50,6 +51,7 @@ OBJ = main.o \
         help_func/ft_atoi.o \
         help_func/ft_strsplit.o \
         help_func/ft_strncpy.o \
+        help_func/ft_strcmp.o \
 
 CC = gcc
 INC = -Iincludes
