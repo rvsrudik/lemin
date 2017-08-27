@@ -25,5 +25,7 @@ int main()
 
 //	while(1);
 
+	printf("ok\n");
+
 return (0);
 }

@@ -151,6 +151,27 @@ int ft_is_end(char * line)
 	return (0);
 }
 
+int ft_check_max_int(char *number)
+{
+	if (ft_strlen(number) > 10)
+	{
+		return (0);
+	}
+	if (ft_strlen(number) == 10)
+	{
+//		printf("%d\n", number[0]);
+		if (number[0] > 50)
+		{
+			return (0);
+		}
+		if (ft_atoi(number) < 0)
+		{
+			return (0);
+		}
+	}
+	return (1);
+}
+
 
 int ft_find_number_of_ants(char **input)
 {
@@ -167,6 +188,10 @@ int ft_find_number_of_ants(char **input)
 		}
 		else if (ft_is_number_of_ants(input[i]))
 		{
+			if (!ft_check_max_int(input[i]))
+			{
+				ft_error();
+			}
 			number_of_ants = ft_atoi(input[i]);
 			input[i][0] = '#';
 			return (number_of_ants);
@@ -220,7 +245,7 @@ char *ft_add_room(char *src, char *dst)
 
 	src = ft_strnew(letters);
 
-	src = ft_strcpy(src, dst);
+	src = ft_strcpy(src, line[0]);
 	dst[0] = '#';
 
 	ft_free_str_array(line);
@@ -365,14 +390,14 @@ char **ft_find_links(char **input)
 	char	**links;
 	int		number_of_links;
 	int		k;
-
+//
 	i = 0;
 	k = 0;
-
+////
 	number_of_links = ft_determ_number_of_links(input);
-
-//	printf("%d\n", number_of_links);
-
+//
+////	printf("%d\n", number_of_links);
+//
 	links = (char**)malloc(sizeof(char**) * (number_of_links + 1));
 	while (i <= number_of_links)
 	{
@@ -380,7 +405,7 @@ char **ft_find_links(char **input)
 		i++;
 	}
 	i = 0;
-
+//
 	while (input[i] != 0)
 	{
 		if (ft_is_comment(input[i]))
@@ -399,9 +424,51 @@ char **ft_find_links(char **input)
 		i++;
 	}
 
-
-
 	return (links);
+}
+
+int ft_find_room(char **rooms, char *link)
+{
+	int i;
+	char  *trim_link;
+
+	i = 0;
+//	printf("rz\n");
+
+	while (rooms[i] != 0)
+	{
+//		printf("[%s] [%s]\n", rooms[i], link);
+//		trim_link = ft_strtrim(link);
+		trim_link = link;
+		if (!strcmp(trim_link, rooms[i]))
+		{
+//			printf("[%s] [%s]\n", trim_link, rooms[i]);
+			return (1);
+		}
+		i++;
+	}
+	ft_error();
+	return (0);
+}
+
+int ft_is_room_link_exist(char **rooms, char **links)
+{
+	int i;
+	char **links_arr;
+
+	i = 0;
+
+
+	while (links[i] != 0)
+	{
+		links_arr = ft_strsplit(links[i], '-');
+		ft_find_room(rooms, links_arr[0]);
+		ft_find_room(rooms, links_arr[1]);
+		ft_free_str_array(links_arr);
+		i++;
+	}
+
+	return (0);
 }
 
 
@@ -417,6 +484,15 @@ void ft_check_input(char **input)
 	rooms = ft_find_rooms(input);
 	links = ft_find_links(input);
 
+	ft_free_str_array(input);
+
+	ft_is_room_link_exist(rooms, links);
+
+
+
+//	ft_free_str_array(links);
+//	ft_free_str_array(rooms);
+
 
 //	printf("%d\n", ft_is_links("    asdf   -   23       32        "));
 
@@ -428,23 +504,23 @@ void ft_check_input(char **input)
 
 
 
-	printf("////////LINKS///////////\n");
-	i = 0;
-	while (links[i] != 0)
-	{
-		printf("%s\n", links[i]);
-		i++;
-	}
+//	printf("////////LINKS///////////\n");
+//	i = 0;
+//	while (links[i] != 0)
+//	{
+//		printf("%s\n", links[i]);
+//		i++;
+//	}
 //
-  i = 0;
-	printf("/////////ROMS//////////\n");
-	while (rooms[i] != 0)
-	{
-		printf("%s\n", rooms[i]);
-		i++;
-	}
+//  i = 0;
+//	printf("/////////ROMS//////////\n");
+//	while (rooms[i] != 0)
+//	{
+//		printf("%s\n", rooms[i]);
+//		i++;
+//	}
 
-	i = 0;
+//	i = 0;
 
 //	printf("///////////////////\n");
 
@@ -455,4 +531,6 @@ void ft_check_input(char **input)
 //		i++;
 //	}
 
+
+//	printf("%d\n", MAX_INT);
 }

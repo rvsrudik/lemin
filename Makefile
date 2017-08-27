@@ -32,6 +32,7 @@ SRC = main.c \
         help_func/ft_strncpy.c \
         help_func/ft_strcmp.c \
         help_func/ft_countchars.c \
+        help_func/ft_strtrim.c \
 
 
 OBJ = main.o \
@@ -54,6 +55,7 @@ OBJ = main.o \
         help_func/ft_strncpy.o \
         help_func/ft_strcmp.o \
         help_func/ft_countchars.o \
+        help_func/ft_strtrim.o \
 
 CC = gcc
 INC = -Iincludes

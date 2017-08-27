@@ -76,13 +76,22 @@ char **ft_read_input()
 {
 	char *line;
 	char **input;
+	int tmp;
 
-	input = (char**)malloc(sizeof(char**) * 1);
+	tmp = 0;
+	input = (char **) malloc(sizeof(char **) * 1);
 	input[0] = 0;
 	while (get_next_line(0, &line) > 0)
 	{
+		tmp++;
 		input = ft_add_line(input, line);
 		free(line);
+	}
+
+//	printf("%d\n", tmp);
+	if (!tmp)
+	{
+		ft_error();
 	}
 	int i = 0;
 
