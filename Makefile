@@ -33,6 +33,8 @@ SRC = main.c \
         help_func/ft_strcmp.c \
         help_func/ft_countchars.c \
         help_func/ft_strtrim.c \
+        ft_find_number_of_ants.c \
+        ft_find_rooms.c \
 
 
 OBJ = main.o \
@@ -56,6 +58,8 @@ OBJ = main.o \
         help_func/ft_strcmp.o \
         help_func/ft_countchars.o \
         help_func/ft_strtrim.o \
+        ft_find_number_of_ants.o \
+        ft_find_rooms.o \
 
 CC = gcc
 INC = -Iincludes

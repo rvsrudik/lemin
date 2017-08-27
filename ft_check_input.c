@@ -151,191 +151,9 @@ int ft_is_end(char * line)
 	return (0);
 }
 
-int ft_check_max_int(char *number)
-{
-	if (ft_strlen(number) > 10)
-	{
-		return (0);
-	}
-	if (ft_strlen(number) == 10)
-	{
-//		printf("%d\n", number[0]);
-		if (number[0] > 50)
-		{
-			return (0);
-		}
-		if (ft_atoi(number) < 0)
-		{
-			return (0);
-		}
-	}
-	return (1);
-}
 
 
-int ft_find_number_of_ants(char **input)
-{
-	int i;
-	int number_of_ants;
 
-	i = 0;
-
-	while (input[i] != 0)
-	{
-		if (ft_is_comment(input[i]))
-		{
-			i++;
-		}
-		else if (ft_is_number_of_ants(input[i]))
-		{
-			if (!ft_check_max_int(input[i]))
-			{
-				ft_error();
-			}
-			number_of_ants = ft_atoi(input[i]);
-			input[i][0] = '#';
-			return (number_of_ants);
-		}
-		else
-		{
-			ft_error();
-		}
-	}
-	return 0;
-}
-
-int ft_determ_number_of_rooms(char **input)
-{
-	int i;
-	int rooms;
-
-	i = 0;
-	rooms = 0;
-	while (!ft_is_links(input[i]))
-	{
-		if (ft_is_start(input[i]) || ft_is_end(input[i]))
-		{
-			i++;
-		}
-		else if (ft_is_comment(input[i]))
-		{
-			i++;
-		}
-		else if (ft_is_rooms(input[i]))
-		{
-			i++;
-			rooms++;
-		}
-		else
-		{
-			ft_error();
-		}
-	}
-	return (rooms);
-}
-
-char *ft_add_room(char *src, char *dst)
-{
-	int letters;
-	char **line;
-
-	line = ft_strsplit(dst, ' ');
-
-	letters = ft_strlen(line[0]);
-
-	src = ft_strnew(letters);
-
-	src = ft_strcpy(src, line[0]);
-	dst[0] = '#';
-
-	ft_free_str_array(line);
-//	printf("%p\n", src);
-
-	return (src);
-}
-
-char **ft_find_rooms(char **input)
-{
-	int i;
-	int number_of_rooms;
-	char **rooms;
-	int k;
-
-	i = 0;
-	k = 2;
-
-	number_of_rooms = ft_determ_number_of_rooms(input);
-
-	rooms = (char**)malloc(sizeof(char**) * (number_of_rooms + 1));
-	while (i <= number_of_rooms)
-	{
-		rooms[i] = 0;
-		i++;
-	}
-	i = 0;
-
-
-//	printf("%d\n", number_of_rooms);
-
-	while (!ft_is_links(input[i]))
-	{
-//		printf("[%d]\n", ft_is_start(input[i]));
-		if (ft_is_start(input[i]))
-		{
-			i++;
-			if (ft_is_rooms(input[i]))
-			{
-				if (!rooms[0])
-				{
-					rooms[0] =	ft_add_room(rooms[0], input[i]);
-//					printf("strat %s\n", rooms[0]);
-				}
-				else
-				{
-					rooms[k] =	ft_add_room(rooms[k], input[i]);
-//					printf("?? %s\n", rooms[k]);
-					k++;
-				}
-			}
-		}
-		else if (ft_is_end(input[i]))
-		{
-			i++;
-			if (ft_is_rooms(input[i]))
-			{
-				if (!rooms[1])
-				{
-					rooms[1] =	ft_add_room(rooms[1], input[i]);
-//					printf("end %s\n", rooms[1]);
-				}
-				else
-				{
-					rooms[k] = ft_add_room(rooms[k], input[i]);
-//					printf("?? %s\n", rooms[k]);
-					k++;
-				}
-			}
-		}
-		else if (ft_is_rooms(input[i]))
-		{
-			rooms[k] = ft_add_room(rooms[k], input[i]);
-//			printf("lol%s\n", rooms[k]);
-			k++;
-		}
-		i++;
-//		printf("%s\n", rooms[k-]);
-	}
-
-//	printf("SUKABLA\n");
-//	i = 0;
-//	while (rooms[i])
-//	{
-//		printf("%s\n", rooms[i]);
-//		i++;
-//	}
-
-	return (rooms);
-}
 
 
 
@@ -484,7 +302,7 @@ void ft_check_input(char **input)
 	rooms = ft_find_rooms(input);
 	links = ft_find_links(input);
 
-	ft_free_str_array(input);
+//	ft_free_str_array(input);
 
 	ft_is_room_link_exist(rooms, links);
 
@@ -494,7 +312,6 @@ void ft_check_input(char **input)
 //	ft_free_str_array(rooms);
 
 
-//	printf("%d\n", ft_is_links("    asdf   -   23       32        "));
 
 
 //	printf("%d\n", num_of_ants);
@@ -502,35 +319,32 @@ void ft_check_input(char **input)
 
 
 
+	printf("////////LINKS///////////\n");
+	i = 0;
+	while (links[i] != 0)
+	{
+		printf("%s\n", links[i]);
+		i++;
+	}
 
-
-//	printf("////////LINKS///////////\n");
-//	i = 0;
-//	while (links[i] != 0)
-//	{
-//		printf("%s\n", links[i]);
-//		i++;
-//	}
+  i = 0;
+	printf("/////////ROMS//////////\n");
+	while (rooms[i] != 0)
+	{
+		printf("%s\n", rooms[i]);
+		i++;
+	}
 //
-//  i = 0;
-//	printf("/////////ROMS//////////\n");
-//	while (rooms[i] != 0)
-//	{
-//		printf("%s\n", rooms[i]);
-//		i++;
-//	}
+	i = 0;
 
-//	i = 0;
-
-//	printf("///////////////////\n");
+	printf("///////////////////\n");
 
 
-//	while (input[i] != 0)
-//	{
-//		printf("%s\n", input[i]);
-//		i++;
-//	}
+	while (input[i] != 0)
+	{
+		printf("%s\n", input[i]);
+		i++;
+	}
+//
 
-
-//	printf("%d\n", MAX_INT);
 }
