@@ -234,12 +234,14 @@ char    **ft_convert_way_to_names(int *shortest_way_by_index, int **way_info, ch
 
     while (i < size)
     {
-        printf("%s ", rooms[shortest_way_by_index[i]]);
+//
+        shortest_way_by_names[i] = rooms[shortest_way_by_index[i]];
+//		printf("%s ", shortest_way_by_names[i]);
         i++;
     }
 
     printf("\n");
-    return 0;
+    return shortest_way_by_names;
 
 }
 
@@ -256,7 +258,7 @@ void        ft_find_way(int num_of_ants, char **rooms, char **links, int **matri
 
     shortest_way_by_names = ft_convert_way_to_names(shortest_way_by_index, way_info, rooms);
 
-    ft_print_way( shortest_way_by_names, num_of_ants);
+    ft_print_way(shortest_way_by_names, num_of_ants, way_info[1][1]);
 
 
 
