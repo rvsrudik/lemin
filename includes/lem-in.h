@@ -29,6 +29,7 @@ int     **ft_create_matrix(char **rooms, char **links);
 int     ft_count_rooms(char **rooms);
 void ft_print_matrix(int **matrix, int numb_of_rooms);
 void ft_find_way(int num_of_ants, char **rooms, char **links, int **matrix);
+void ft_print_way(char    **shortest_way_by_names, int num_of_ants);
 
 
 //int			ft_isdigit(int c);

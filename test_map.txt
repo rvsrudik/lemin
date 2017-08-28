@@ -2,17 +2,16 @@
 10
 ##start
 r1 0 0
-r2 1 1
+r8 1 1
 r3 1 1
-r4 1 2
+rr8 1 2
 r5 6 7
+r2 43 23
 r6 6 7
 ##end
-r7 5 6
+r9 5 6
 ##command
+r1-r3
 r1-r2
-r2-r3
-r3-r4
-r4-r5
-r5-r6
-r6-r7
+r3-rr8
+rr8-r9

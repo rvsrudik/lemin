@@ -256,6 +256,9 @@ void        ft_find_way(int num_of_ants, char **rooms, char **links, int **matri
 
     shortest_way_by_names = ft_convert_way_to_names(shortest_way_by_index, way_info, rooms);
 
+    ft_print_way( shortest_way_by_names, num_of_ants);
+
+
 
 //    printf("%d \n", way_info[1][1]);
 
