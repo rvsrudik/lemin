@@ -39,6 +39,7 @@ SRC = main.c \
         ft_is_correct_in_params.c \
         help_func/ft_is_number.c \
         help_func/ft_free_str_array.c \
+        ft_create_matrix.c \
 
 
 OBJ = main.o \
@@ -68,6 +69,7 @@ OBJ = main.o \
         ft_is_correct_in_params.o \
         help_func/ft_is_number.o \
         help_func/ft_free_str_array.o \
+        ft_create_matrix.o \
 
 CC = gcc
 INC = -Iincludes

@@ -64,7 +64,9 @@ static void  ft_is_same_rooms(char **rooms)
 {
     int i;
     int k;
+    int flag;
 
+    flag = 0;
     k = 0;
     i = 0;
 
@@ -74,10 +76,17 @@ static void  ft_is_same_rooms(char **rooms)
         {
             if (!ft_strcmp(rooms[i], rooms[k]))
             {
-                ft_error();
+//                printf("%s %s\n", rooms[i], rooms[k]);
+                flag++;
             }
             k++;
         }
+        if (flag > 1)
+        {
+//            printf("%d\n", flag);
+            ft_error();
+        }
+        flag = 0;
         k = 0;
         i++;
     }
@@ -119,12 +128,17 @@ void ft_is_links_exist(char **input)
         ft_error();
 }
 
+
+
+
+
 void			ft_check_input(char **input)
 {
 	int		i;
 	int		num_of_ants;
 	char	**rooms;
 	char	**links;
+    int     **matrix;
 
 	i = 0;
 	num_of_ants = ft_find_number_of_ants(input);
@@ -133,39 +147,37 @@ void			ft_check_input(char **input)
 	links = ft_find_links(input);
 
     ft_is_room_link_exist(rooms, links);
-//    ft_is_same_rooms(rooms);
+    ft_is_same_rooms(rooms);
+
+    matrix = ft_create_matrix(rooms, links);
 
 //	ft_free_str_array(input);
-
-
-
-
 
 //	ft_free_str_array(links);
 //	ft_free_str_array(rooms);
 
 
-	printf("%d\n", num_of_ants);
+//	printf("%d\n", num_of_ants);
 
 
-	printf("////////LINKS///////////\n");
-	i = 0;
-	while (links[i] != 0)
-	{
-		printf("%s\n", links[i]);
-		i++;
-	}
-
-  i = 0;
-	printf("/////////ROMS//////////\n");
-	while (rooms[i] != 0)
-	{
-		printf("%s\n", rooms[i]);
-		i++;
-	}
-
-	i = 0;
-
+//	printf("////////LINKS///////////\n");
+//	i = 0;
+//	while (links[i] != 0)
+//	{
+//		printf("%s\n", links[i]);
+//		i++;
+//	}
+//
+//  i = 0;
+//	printf("/////////ROMS//////////\n");
+//	while (rooms[i] != 0)
+//	{
+//		printf("%s\n", rooms[i]);
+//		i++;
+//	}
+//
+//	i = 0;
+//
 //	printf("///////////////////\n");
 //
 //	while (input[i] != 0)
@@ -173,4 +185,8 @@ void			ft_check_input(char **input)
 //		printf("%s\n", input[i]);
 //		i++;
 //	}
+
+
+
+    ft_print_matrix(matrix, ft_count_rooms(rooms));
 }

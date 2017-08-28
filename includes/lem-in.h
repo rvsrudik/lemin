@@ -25,6 +25,9 @@ void ft_free_str_array(char **line);
 char **ft_find_links(char **input);
 int ft_is_number(char *num);
 void ft_free_str_array(char **line);
+int     **ft_create_matrix(char **rooms, char **links);
+int     ft_count_rooms(char **rooms);
+void ft_print_matrix(int **matrix, int numb_of_rooms);
 
 
 //int			ft_isdigit(int c);
