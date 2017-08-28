@@ -12,6 +12,21 @@
 
 #include "includes/lem-in.h"
 
+void ft_free_matrix(int **matrix, int rooms)
+{
+    int i;
+
+
+    i = 0;
+
+    while (i <= rooms)
+    {
+            free(matrix[i]);
+        i++;
+    }
+    free(matrix);
+}
+
 int ft_is_rooms(char *line)
 {
 	char	**room;
@@ -151,10 +166,11 @@ void			ft_check_input(char **input)
 
     matrix = ft_create_matrix(rooms, links);
 
-//	ft_free_str_array(input);
+	ft_free_str_array(input);
 
 //	ft_free_str_array(links);
 //	ft_free_str_array(rooms);
+//    ft_free_matrix(matrix, ft_count_rooms(rooms));
 
 
 //	printf("%d\n", num_of_ants);
@@ -188,5 +204,5 @@ void			ft_check_input(char **input)
 
 
 
-    ft_print_matrix(matrix, ft_count_rooms(rooms));
+//    ft_print_matrix(matrix, ft_count_rooms(rooms));
 }

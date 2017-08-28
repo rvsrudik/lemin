@@ -30,7 +30,6 @@ void ft_print_matrix(int **matrix, int numb_of_rooms)
     int k;
 
     i = 0;
-
     while (i <= numb_of_rooms)
     {
         k = 0;
@@ -76,7 +75,6 @@ int     ft_get_room_index(char **rooms, char *name_room)
     int i;
 
     i = 0;
-
     while (rooms[i] != 0)
     {
         if (!ft_strcmp(rooms[i], name_room))
@@ -96,21 +94,15 @@ int     **ft_fill_matrix(int **matrix, char **links, int numb_of_rooms, char **r
     int     coord_y;
 
     i = 0;
-
     while (links[i] != 0)
     {
-//        printf("%s\n", links[i]);
         links_params = ft_strsplit(links[i], '-');
         coord_x = ft_get_room_index(rooms, links_params[0]) + 1;
         coord_y = ft_get_room_index(rooms, links_params[1]) + 1;
-//        printf("%d %d\n", coord_x, coord_y);
         matrix[coord_x][coord_y] = 1;
-
-//        printf("%d\n", tmp);
         i++;
+        ft_free_str_array(links_params);
     }
-//    ft_print_matrix(matrix, numb_of_rooms);
-
     return (matrix);
 }
 
