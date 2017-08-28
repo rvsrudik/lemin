@@ -60,6 +60,29 @@ static int		ft_find_room(char **rooms, char *link)
 	return (0);
 }
 
+static void  ft_is_same_rooms(char **rooms)
+{
+    int i;
+    int k;
+
+    k = 0;
+    i = 0;
+
+    while (rooms[i] != 0)
+    {
+        while (rooms[k] != 0)
+        {
+            if (!ft_strcmp(rooms[i], rooms[k]))
+            {
+                ft_error();
+            }
+            k++;
+        }
+        k = 0;
+        i++;
+    }
+}
+
 static int		ft_is_room_link_exist(char **rooms, char **links)
 {
 	int		i;
@@ -77,6 +100,25 @@ static int		ft_is_room_link_exist(char **rooms, char **links)
 	return (0);
 }
 
+void ft_is_links_exist(char **input)
+{
+    int i;
+    int flag;
+
+    i = 0;
+    flag = 0;
+    while (input[i] != 0)
+    {
+        if (ft_is_links(input[i]))
+        {
+            flag = 1;
+        }
+        i++;
+    }
+    if (!flag)
+        ft_error();
+}
+
 void			ft_check_input(char **input)
 {
 	int		i;
@@ -86,12 +128,16 @@ void			ft_check_input(char **input)
 
 	i = 0;
 	num_of_ants = ft_find_number_of_ants(input);
+    ft_is_links_exist(input);
 	rooms = ft_find_rooms(input);
 	links = ft_find_links(input);
 
+    ft_is_room_link_exist(rooms, links);
+//    ft_is_same_rooms(rooms);
+
 //	ft_free_str_array(input);
 
-	ft_is_room_link_exist(rooms, links);
+
 
 
 
@@ -120,11 +166,11 @@ void			ft_check_input(char **input)
 
 	i = 0;
 
-	printf("///////////////////\n");
-
-	while (input[i] != 0)
-	{
-		printf("%s\n", input[i]);
-		i++;
-	}
+//	printf("///////////////////\n");
+//
+//	while (input[i] != 0)
+//	{
+//		printf("%s\n", input[i]);
+//		i++;
+//	}
 }

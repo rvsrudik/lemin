@@ -47,6 +47,8 @@ int			ft_find_number_of_ants(char **input)
 			if (!ft_check_max_int(input[i]))
 				ft_error();
 			number_of_ants = ft_atoi(input[i]);
+			if (number_of_ants == 0)
+				ft_error();
 			input[i][0] = '#';
 			return (number_of_ants);
 		}

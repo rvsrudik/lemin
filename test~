@@ -1,0 +1,14 @@
+#comment
+##start
+r1 0 0
+r2 1 1
+r3 2 2
+r4 3 3
+r5 4 4
+##end
+r0 7 7
+r1-r2
+r2-r3
+r3-r4
+r5-r0
+
