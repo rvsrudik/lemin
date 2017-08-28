@@ -21,7 +21,7 @@ static int		ft_determ_number_of_rooms(char **input)
 	rooms = 0;
 	while (!ft_is_links(input[i]))
 	{
-		if (ft_is_start(input[i]) || ft_is_end(input[i]))
+		if (ft_is_start(input[i], input[i + 1]) || ft_is_end(input[i], input[i + 1]))
 			i++;
 		else if (ft_is_comment(input[i]))
 			i++;
@@ -75,7 +75,7 @@ static void		ft_norm_two(int *i, int *k, char **rooms, char **input)
 
 static void		ft_norm_one(int *i, int *k, char **rooms, char **input)
 {
-	if (ft_is_start(input[*i]))
+	if (ft_is_start(input[*i], input[*i + 1]))
 	{
 		(*i)++;
 		if (ft_is_rooms(input[*i]))
@@ -89,7 +89,7 @@ static void		ft_norm_one(int *i, int *k, char **rooms, char **input)
 			}
 		}
 	}
-	else if (ft_is_end(input[*i]))
+	else if (ft_is_end(input[*i], input[*i + 1]))
 		ft_norm_two(i, k, rooms, input);
 	else if (ft_is_rooms(input[*i]))
 	{

@@ -21,7 +21,7 @@ static int		ft_determ_number_of_links(char **input)
 	links = 0;
 	while (input[i] != 0)
 	{
-		if (ft_is_start(input[i]) || ft_is_end(input[i]))
+		if (ft_is_start(input[i], input[i + 1]) || ft_is_end(input[i], input[i + 1]))
 			i++;
 		else if (ft_is_comment(input[i]))
 			i++;

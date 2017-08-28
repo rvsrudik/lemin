@@ -37,18 +37,18 @@ int		ft_is_number_of_ants(char *line)
 	return (1);
 }
 
-int		ft_is_start(char * line)
+int		ft_is_start(char *line, char *next_line)
 {
-	if (!ft_strcmp(line, "##start"))
+	if (!ft_strcmp(line, "##start") && ft_is_rooms(next_line))
 	{
 		return (1);
 	}
 	return (0);
 }
 
-int		ft_is_end(char * line)
+int		ft_is_end(char *line, char *next_line)
 {
-	if (!ft_strcmp(line, "##end"))
+	if (!ft_strcmp(line, "##end") && ft_is_rooms(next_line))
 	{
 		return (1);
 	}

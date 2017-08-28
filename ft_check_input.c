@@ -145,7 +145,35 @@ void ft_is_links_exist(char **input)
 
 
 
+void ft_is_start_end_exist(char **input)
+{
+    int     i;
+    int     count_start;
+    int     count_finish;
 
+    i = 0;
+    count_finish = 0;
+    count_start = 0;
+//    printf("here\n");
+
+    while (input[i] != 0)
+    {
+        if (ft_is_start(input[i], input[i + 1]))
+            count_start++;
+        i++;
+    }
+    i = 0;
+    while (input[i] != 0)
+    {
+        if (ft_is_end(input[i], input[i + 1]))
+            count_finish++;
+        i++;
+    }
+
+    if (!count_finish || !count_start)
+        ft_error();
+
+}
 
 void			ft_check_input(char **input)
 {
@@ -158,6 +186,7 @@ void			ft_check_input(char **input)
 	i = 0;
 	num_of_ants = ft_find_number_of_ants(input);
     ft_is_links_exist(input);
+    ft_is_start_end_exist(input);
 	rooms = ft_find_rooms(input);
 	links = ft_find_links(input);
 
