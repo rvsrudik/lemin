@@ -49,7 +49,7 @@ char **ft_add_line(char** input, char* line)
 
 	count_lines = count_str_array(input);
 	i = 0;
-	if (!(new_input = (char**)malloc(sizeof(char**) * (count_lines + 2))))
+	if (!(new_input = (char**)malloc(sizeof(char*) * (count_lines + 2))))
 	{
 		ft_free_old_array(input);
 		free(line);
@@ -79,7 +79,7 @@ char **ft_read_input()
 	int tmp;
 
 	tmp = 0;
-	input = (char **) malloc(sizeof(char **) * 1);
+	input = (char **)malloc(sizeof(char*) * 1);
 	input[0] = 0;
 	while (get_next_line(0, &line) > 0)
 	{

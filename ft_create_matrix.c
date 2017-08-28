@@ -51,10 +51,10 @@ int     **ft_create_empty_matrix(int numb_of_rooms)
     int k;
 
     i = 0;
-    empty_matrix = (int**)malloc(sizeof(int**) * (numb_of_rooms + 1));
+    empty_matrix = (int**)malloc(sizeof(int*) * (numb_of_rooms + 1));
     while (i <= numb_of_rooms)
     {
-        empty_matrix[i] = (int*)malloc(sizeof(int*) * (numb_of_rooms + 1));
+        empty_matrix[i] = (int*)malloc(sizeof(int) * (numb_of_rooms + 1));
         k = 0;
         while (k <= numb_of_rooms)
         {
@@ -105,7 +105,6 @@ int     **ft_fill_matrix(int **matrix, char **links, int numb_of_rooms, char **r
         coord_y = ft_get_room_index(rooms, links_params[1]) + 1;
 //        printf("%d %d\n", coord_x, coord_y);
         matrix[coord_x][coord_y] = 1;
-
 
 //        printf("%d\n", tmp);
         i++;
