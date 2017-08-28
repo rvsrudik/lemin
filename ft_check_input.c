@@ -177,13 +177,11 @@ void ft_is_start_end_exist(char **input)
 
 void			ft_check_input(char **input)
 {
-	int		i;
 	int		num_of_ants;
 	char	**rooms;
 	char	**links;
     int     **matrix;
 
-	i = 0;
 	num_of_ants = ft_find_number_of_ants(input);
     ft_is_links_exist(input);
     ft_is_start_end_exist(input);
@@ -197,6 +195,8 @@ void			ft_check_input(char **input)
 
 	ft_free_str_array(input);
 
+    ft_find_way(num_of_ants, rooms, links, matrix);
+
 //	ft_free_str_array(links);
 //	ft_free_str_array(rooms);
 //    ft_free_matrix(matrix, ft_count_rooms(rooms));
@@ -204,6 +204,8 @@ void			ft_check_input(char **input)
 
 //	printf("%d\n", num_of_ants);
 
+
+    int		i;
 
 //	printf("////////LINKS///////////\n");
 //	i = 0;

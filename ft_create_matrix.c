@@ -100,6 +100,7 @@ int     **ft_fill_matrix(int **matrix, char **links, int numb_of_rooms, char **r
         coord_x = ft_get_room_index(rooms, links_params[0]) + 1;
         coord_y = ft_get_room_index(rooms, links_params[1]) + 1;
         matrix[coord_x][coord_y] = 1;
+        matrix[coord_y][coord_x] = 1;
         i++;
         ft_free_str_array(links_params);
     }
