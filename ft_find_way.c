@@ -15,6 +15,7 @@
 /*
 ** way_info[i][0]   - цвет прохождения; 0 - не проходили, 1 - соседи, 2 - прошел; 3 - нужно поменять; default = 0;
 ** way_info[i][1]   - расстояние от старта; default = -1;
+ * way_info[i][2]   - от какой ячейки пришел;
 **   i - индекс (+1?) дома;
 **
 */
@@ -32,7 +33,7 @@ int **ft_find_room_links(int **way_info, int **matrix, char **rooms)
     {
         if (way_info[i][0] == 3)  // находим  серые комнаты
         {
-            printf("gray: %d, status %d || ", i, way_info[i][0]);
+//            printf("gray: %d, status %d || ", i, way_info[i][0]);
             k = 1;
             while (k <= ft_count_rooms(rooms)) //проходим по матрице
             {
@@ -40,6 +41,7 @@ int **ft_find_room_links(int **way_info, int **matrix, char **rooms)
                 {
                     way_info[k-1][0] = 1;
                     way_info[k-1][1] = way_info[i][1] + 1;
+                    way_info[k-1][2] = i;
                 }
                 k++;
             }
@@ -50,30 +52,32 @@ int **ft_find_room_links(int **way_info, int **matrix, char **rooms)
     }
 
 
-
-        printf("-------------\n");
-    int l;
-    int ku;
-    l = 0;
-
-    while (l < ft_count_rooms(rooms))
-    {
-        ku = 0;
-        while (ku < 2)
-        {
-            printf("%d ", way_info[l][ku]);
-            ku++;
-        }
-        l++;
-        printf("\n");
-
-    }
-    printf("\n------------\n");
-
     return way_info;
 }
 
-int **ft_fill_way_info(int **way_info, char **rooms, char **links, int **matrix)
+void ft_is_no_way(int **way_info, char **rooms)
+{
+    int i;
+    int grays;
+
+    grays = 0;
+
+    i = 0;
+
+    while (i < ft_count_rooms(rooms))
+    {
+        if (way_info[i][0] == 1)
+        {
+            grays++;
+        }
+        i++;
+    }
+
+    if (!grays)
+        ft_error();
+}
+
+int     **ft_fill_way_info(int **way_info, char **rooms, char **links, int **matrix)
 {
     int i;
     int current_index;
@@ -88,10 +92,12 @@ int **ft_fill_way_info(int **way_info, char **rooms, char **links, int **matrix)
 
     while (way_info[1][1] == -1)
     {
+        ft_is_no_way(way_info,  rooms);
 //    printf("asd\n");
         i = 0;
         while (i < ft_count_rooms(rooms))
         {
+
             if (way_info[i][0] == 1)  //нашли серую ячейку
             {
                 way_info[i][0] = 3;
@@ -108,7 +114,7 @@ int **ft_fill_way_info(int **way_info, char **rooms, char **links, int **matrix)
     return (way_info);
 }
 
-int **ft_get_info_way_array(int num_of_ants, char **rooms, char **links, int **matrix)
+int     **ft_get_info_way_array(int num_of_ants, char **rooms, char **links, int **matrix)
 {
     int **way_info;
     int i;
@@ -121,9 +127,10 @@ int **ft_get_info_way_array(int num_of_ants, char **rooms, char **links, int **m
 
     while (i < count_rooms)
     {
-        way_info[i] = (int*)malloc(sizeof(int) * 2);
+        way_info[i] = (int*)malloc(sizeof(int) * 3);
         way_info[i][0] = 0;
         way_info[i][1] = -1;
+        way_info[i][2] = -1;
         i++;
     }
 
@@ -134,39 +141,145 @@ int **ft_get_info_way_array(int num_of_ants, char **rooms, char **links, int **m
     return (way_info);
 }
 
-void ft_find_way(int num_of_ants, char **rooms, char **links, int **matrix)
+
+int     *ft_determ_shortest_way(int **way_info, char **rooms)
 {
-    int **way_info;
+    int     *shortest_way;
+    int     room_index;
+    int     current_link;
+    int     i;
+    int     steps;
+
+
+    steps = way_info[1][1];
+    i = steps - 1;
+
+    current_link = way_info[1][2];
+    room_index = 1;
+    shortest_way = (int*)malloc(sizeof(int) * steps);
+    shortest_way[i] = room_index;
+    i--;
+
+    while (current_link != -1)
+    {
+        shortest_way[i] = current_link;
+        current_link = way_info[current_link][2];
+        i--;
+    }
+
+
+
+
+//    int     *shortest_way;
+//    int     i;
+//    int     k;
+//    int     steps;
+//    int     j;
+//
+//    i = 0;
+//    k = 0;
+//    j = 0;
+//    steps = way_info[1][1];
+//
+//    shortest_way = (int*)malloc(sizeof(int) * steps);
+//
+//    shortest_way[steps - 1] = 1;
+//
+//    k = steps - 1;
+//    i = way_info[1][3];
+//    while (way_info[i][3] != -1)
+//    {
+//        shortest_way[];
+//        i = way_info[i][3];
+//    }
+
+//    while (i < way_info[1][1])
+//    {
+//        j = 0;
+//        while (j < ft_count_rooms(rooms))
+//        {
+//            if (way_info[j][1] == k)
+//            {
+//                shortest_way[k-1] = j;
+//                k--;
+//                break;
+//            }
+//            j++;
+//        }
+//        i++;
+//    }
+
+//    printf("%d\n", way_info[1][1]);
+//    printf("\n---------\n");
+//    i = 0;
+//    while (i < way_info[1][1])
+//    {
+//        printf("%d ", shortest_way[i]);
+//        i++;
+//    }
+//    printf("\n---------\n");
+
+    return shortest_way;
+}
+
+char    **ft_convert_way_to_names(int *shortest_way_by_index, int **way_info, char **rooms)
+{
+    int i;
+    char    **shortest_way_by_names;
+    int size = way_info[1][1];
+
+    i = 0;
+    shortest_way_by_names = (char**)malloc(sizeof(char*) * (size + 1));
+    shortest_way_by_names[size] = 0;
+
+    while (i < size)
+    {
+        printf("%s ", rooms[shortest_way_by_index[i]]);
+        i++;
+    }
+
+    printf("\n");
+    return 0;
+
+}
+
+void        ft_find_way(int num_of_ants, char **rooms, char **links, int **matrix)
+{
+    int     **way_info;
+    int     *shortest_way_by_index;
+    char    **shortest_way_by_names;
 
     way_info = ft_get_info_way_array(num_of_ants, rooms, links, matrix);
 //    way_info
 
+    shortest_way_by_index = ft_determ_shortest_way(way_info, rooms);
+
+    shortest_way_by_names = ft_convert_way_to_names(shortest_way_by_index, way_info, rooms);
+
+
+//    printf("%d \n", way_info[1][1]);
 
 
 
-    printf("%d \n", way_info[1][1]);
 
 
 
-
-
-
-
-    int l;
-    int k;
-    l = 0;
-
-    while (l < ft_count_rooms(rooms))
-    {
-        k = 0;
-        while (k < 2)
-        {
-            printf("%d ", way_info[l][k]);
-            k++;
-        }
-        l++;
-        printf("\n");
-
-    }
+//
+//    int l;
+//    int k;
+//    l = 0;
+//
+//    while (l < ft_count_rooms(rooms))
+//    {
+//        k = 0;
+//        while (k < 3)
+//        {
+//            printf("%3d ", way_info[l][k]);
+//            k++;
+//        }
+//        l++;
+//        printf("\n");
+//
+//    }
 
 }

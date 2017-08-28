@@ -235,5 +235,5 @@ void			ft_check_input(char **input)
 
 
 
-    ft_print_matrix(matrix, ft_count_rooms(rooms));
+//    ft_print_matrix(matrix, ft_count_rooms(rooms));
 }
