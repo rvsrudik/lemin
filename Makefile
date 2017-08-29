@@ -79,7 +79,7 @@ OBJ = main.o \
 
 CC = gcc
 INC = -Iincludes
-CFLAGS =
+CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 

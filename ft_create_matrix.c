@@ -24,24 +24,6 @@ int     ft_count_rooms(char **rooms)
     return (i);
 }
 
-void ft_print_matrix(int **matrix, int numb_of_rooms)
-{
-    int i;
-    int k;
-
-    i = 0;
-    while (i <= numb_of_rooms)
-    {
-        k = 0;
-        while (k <= numb_of_rooms)
-        {
-//            printf("%d ", matrix[i][k]);
-            k++;
-        }
-//        printf("\n");
-        i++;
-    }
-}
 
 int     **ft_create_empty_matrix(int numb_of_rooms)
 {
@@ -93,6 +75,8 @@ int     **ft_fill_matrix(int **matrix, char **links, int numb_of_rooms, char **r
     int     coord_x;
     int     coord_y;
 
+	numb_of_rooms += 1;
+	numb_of_rooms -= 1;
     i = 0;
     while (links[i] != 0)
     {

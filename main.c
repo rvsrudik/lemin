@@ -14,11 +14,9 @@
 
 int main()
 {
-	char **input;
-	int i = 0;
+	char	**input;
 
 	input = ft_read_input();
 	ft_check_input(input);
-
-	while (1);
+	return (0);
 }

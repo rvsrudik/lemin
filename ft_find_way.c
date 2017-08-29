@@ -77,7 +77,7 @@ void ft_is_no_way(int **way_info, char **rooms)
         ft_error();
 }
 
-int     **ft_fill_way_info(int **way_info, char **rooms, char **links, int **matrix)
+int     **ft_fill_way_info(int **way_info, char **rooms, int **matrix)
 {
     int i;
     int current_index;
@@ -114,7 +114,7 @@ int     **ft_fill_way_info(int **way_info, char **rooms, char **links, int **mat
     return (way_info);
 }
 
-int     **ft_get_info_way_array(int num_of_ants, char **rooms, char **links, int **matrix)
+int     **ft_get_info_way_array( char **rooms,  int **matrix)
 {
     int **way_info;
     int i;
@@ -136,14 +136,14 @@ int     **ft_get_info_way_array(int num_of_ants, char **rooms, char **links, int
     }
 
 
-    way_info = ft_fill_way_info(way_info, rooms, links, matrix);
+    way_info = ft_fill_way_info(way_info, rooms, matrix);
 
 
     return (way_info);
 }
 
 
-int     *ft_determ_shortest_way(int **way_info, char **rooms)
+int     *ft_determ_shortest_way(int **way_info)
 {
     int     *shortest_way;
     int     room_index;
@@ -244,7 +244,7 @@ char    **ft_convert_way_to_names(int *shortest_way_by_index, int **way_info, ch
 
 }
 
-void ft_print_params(int num_of_ants, char **rooms, char **links, char **print_rooms)
+void ft_print_params(int num_of_ants, char **links, char **print_rooms)
 {
 	int i;
 
@@ -267,10 +267,7 @@ void ft_print_params(int num_of_ants, char **rooms, char **links, char **print_r
 		i++;
 	}
 	write(1, "\n", 1);
-
 }
-
-
 
 void        ft_find_way(int num_of_ants, char **rooms, char **links, int **matrix, char **print_rooms)
 {
@@ -278,47 +275,15 @@ void        ft_find_way(int num_of_ants, char **rooms, char **links, int **matri
     int     *shortest_way_by_index;
     char    **shortest_way_by_names;
 
-    way_info = ft_get_info_way_array(num_of_ants, rooms, links, matrix);
-
-    shortest_way_by_index = ft_determ_shortest_way(way_info, rooms);
-
+    way_info = ft_get_info_way_array(rooms, matrix);
+    shortest_way_by_index = ft_determ_shortest_way(way_info);
     shortest_way_by_names = ft_convert_way_to_names(shortest_way_by_index, way_info, rooms);
-	free(shortest_way_by_index);
-
-	ft_print_params(num_of_ants, rooms, links, print_rooms);
-
+	ft_print_params(num_of_ants, links, print_rooms);
     ft_print_way(shortest_way_by_names, num_of_ants, way_info[1][1]);
-
-	free(shortest_way_by_names);
 	ft_free_matrix(matrix, ft_count_rooms(rooms));
 	ft_free_str_array(rooms);
 	ft_free_str_array(links);
 	ft_free_str_array(print_rooms);
 	ft_free_matrix(way_info, ft_count_rooms(rooms));
-
-
-
-
-
-
-
-
-//
-//    int l;
-//    int k;
-//    l = 0;
-//
-//    while (l < ft_count_rooms(rooms))
-//    {
-//        k = 0;
-//        while (k < 3)
-//        {
-//            printf("%3d ", way_info[l][k]);
-//            k++;
-//        }
-//        l++;
-//        printf("\n");
-//
-//    }
 
 }

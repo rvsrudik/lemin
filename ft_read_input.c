@@ -12,10 +12,10 @@
 
 #include "includes/lem-in.h"
 
-int count_str_array(char **input)
+int		count_str_array(char **input)
 {
-	int i;
-	int count_lines;
+	int		i;
+	int		count_lines;
 
 	i = 0;
 	count_lines = 0;
@@ -27,9 +27,9 @@ int count_str_array(char **input)
 	return (count_lines);
 }
 
-void ft_free_old_array(char **input)
+void	ft_free_old_array(char **input)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while(input[i] != 0)
@@ -41,11 +41,11 @@ void ft_free_old_array(char **input)
 	free(input);
 }
 
-char **ft_add_line(char** input, char* line)
+char	**ft_add_line(char** input, char* line)
 {
-	int count_lines;
-	int i;
-	char **new_input;
+	int		count_lines;
+	int		i;
+	char	**new_input;
 
 	count_lines = count_str_array(input);
 	i = 0;
@@ -56,10 +56,7 @@ char **ft_add_line(char** input, char* line)
 		ft_error();
 	}
 	while (i < count_lines + 2)
-	{
-		new_input[i] = 0;
-		i++;
-	}
+		new_input[i++] = 0;
 	i = 0;
 	while (i < count_lines){
 		new_input[i] = ft_strnew(ft_strlen(input[i]));
@@ -72,11 +69,11 @@ char **ft_add_line(char** input, char* line)
 	return (new_input);
 }
 
-char **ft_read_input()
+char	**ft_read_input()
 {
-	char *line;
-	char **input;
-	int tmp;
+	char	*line;
+	char	**input;
+	int		tmp;
 
 	tmp = 0;
 	input = (char **)malloc(sizeof(char*) * 1);
@@ -87,13 +84,9 @@ char **ft_read_input()
 		input = ft_add_line(input, line);
 		free(line);
 	}
-
-//	printf("%d\n", tmp);
 	if (!tmp)
 	{
 		ft_error();
 	}
-	int i = 0;
-
 	return input;
 }
