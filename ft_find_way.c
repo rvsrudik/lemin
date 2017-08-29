@@ -124,6 +124,7 @@ int     **ft_get_info_way_array(int num_of_ants, char **rooms, char **links, int
     count_rooms = ft_count_rooms(rooms);
 
     way_info = (int**)malloc(sizeof(int*) * ft_count_rooms(rooms));
+	way_info[ft_count_rooms(rooms)] = 0;
 
     while (i < count_rooms)
     {
@@ -234,9 +235,9 @@ char    **ft_convert_way_to_names(int *shortest_way_by_index, int **way_info, ch
 
     while (i < size)
     {
-//
+
         shortest_way_by_names[i] = rooms[shortest_way_by_index[i]];
-//		printf("%s ", shortest_way_by_names[i]);
+		printf("%s ", shortest_way_by_names[i]);
         i++;
     }
 
@@ -269,6 +270,8 @@ void ft_print_params(int num_of_ants, char **rooms, char **links, char **print_r
 
 }
 
+
+
 void        ft_find_way(int num_of_ants, char **rooms, char **links, int **matrix, char **print_rooms)
 {
     int     **way_info;
@@ -276,23 +279,24 @@ void        ft_find_way(int num_of_ants, char **rooms, char **links, int **matri
     char    **shortest_way_by_names;
 
     way_info = ft_get_info_way_array(num_of_ants, rooms, links, matrix);
-//    way_info
 
     shortest_way_by_index = ft_determ_shortest_way(way_info, rooms);
 
     shortest_way_by_names = ft_convert_way_to_names(shortest_way_by_index, way_info, rooms);
-
+	free(shortest_way_by_index);
 
 	ft_print_params(num_of_ants, rooms, links, print_rooms);
 
-
-
-
     ft_print_way(shortest_way_by_names, num_of_ants, way_info[1][1]);
 
+	free(shortest_way_by_names);
+	ft_free_matrix(matrix, ft_count_rooms(rooms));
+	ft_free_str_array(rooms);
+	ft_free_str_array(links);
+	ft_free_str_array(print_rooms);
+	ft_free_matrix(way_info, ft_count_rooms(rooms));
 
 
-//    printf("%d \n", way_info[1][1]);
 
 
 

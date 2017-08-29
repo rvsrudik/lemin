@@ -12,16 +12,15 @@
 
 #include "includes/lem-in.h"
 
-void ft_free_matrix(int **matrix, int rooms)
+void ft_free_matrix(int **matrix, int x)
 {
     int i;
 
-
     i = 0;
 
-    while (i <= rooms)
+    while (i <= x)
     {
-            free(matrix[i]);
+			free(matrix[i]);
         i++;
     }
     free(matrix);
@@ -222,60 +221,11 @@ void			ft_check_input(char **input)
 
     ft_is_room_link_exist(rooms, links);
     ft_is_same_rooms(rooms);
-
+//
     matrix = ft_create_matrix(rooms, links);
-
 	ft_free_str_array(input);
-
+//
     ft_find_way(num_of_ants, rooms, links, matrix, print_rooms);
 
-//	ft_free_str_array(links);
-//	ft_free_str_array(rooms);
-//    ft_free_matrix(matrix, ft_count_rooms(rooms));
 
-
-//	printf("%d\n", num_of_ants);
-
-
-    int		i;
-
-//	printf("////////LINKS///////////\n");
-//	i = 0;
-//	while (links[i] != 0)
-//	{
-//		printf("%s\n", links[i]);
-//		i++;
-//	}
-//
-//  i = 0;
-//	printf("/////////ROMS//////////\n");
-//	while (rooms[i] != 0)
-//	{
-//		printf("%s\n", rooms[i]);
-//		i++;
-//	}
-//
-//	i = 0;
-//
-//	printf("///////////////////\n");
-//
-//	while (input[i] != 0)
-//	{
-//		printf("%s\n", input[i]);
-//		i++;
-//	}
-
-
-		i = 0;
-
-//	printf("///////////////////\n");
-//
-//	while (print_rooms[i] != 0)
-//	{
-//		printf("%s\n", print_rooms[i]);
-//		i++;
-//	}
-//	printf("///////////////////\n");
-
-//    ft_print_matrix(matrix, ft_count_rooms(rooms));
 }

@@ -31,6 +31,7 @@ int     ft_count_rooms(char **rooms);
 void ft_print_matrix(int **matrix, int numb_of_rooms);
 void ft_find_way(int num_of_ants, char **rooms, char **links, int **matrix, char **print_rooms);
 void ft_print_way(char    **shortest_way_by_names, int num_of_ants, int way_len);
+void ft_free_matrix(int **matrix, int x);
 
 
 //int			ft_isdigit(int c);
