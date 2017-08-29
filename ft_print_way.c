@@ -25,13 +25,6 @@ void ft_print_way(char **shortest_way_by_names, int num_of_ants, int way_len)
 	int flag;
 
 
-
-
-
-
-
-
-
 	i = 0;
 
 	way_array = (int*)malloc(sizeof(int) * (num_of_ants + 2));
@@ -46,8 +39,6 @@ void ft_print_way(char **shortest_way_by_names, int num_of_ants, int way_len)
 
 	way_array[0] = num_of_ants;
 	way_array[way_len + 1] = 0;
-
-
 
 
 
@@ -86,10 +77,14 @@ void ft_print_way(char **shortest_way_by_names, int num_of_ants, int way_len)
 				{
 					flag = 1;
 					suka++;
-					printf("L%d-%s", aunts_to_end, shortest_way_by_names[i -1]);
+//					write(1, "L", 1);
+					write(1, "L", 1);
+					ft_putnbr(aunts_to_end);
+					write(1, "-", 1);
+					write(1, shortest_way_by_names[i -1], ft_strlen(shortest_way_by_names[i -1]));
 					if (i != 1 && aunts_to_start != 0)
 					{
-						printf(" ");
+						write(1, " ", 1);
 					}
 				}
 
@@ -98,10 +93,9 @@ void ft_print_way(char **shortest_way_by_names, int num_of_ants, int way_len)
 		}
 		if (flag == 1)
 		{
-			printf("\n");
+			write(1, "\n", 1);
 		}
 		tmp = 0;
 	}
 	free(way_array);
-
 }

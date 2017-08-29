@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/get_next_line.h"
-#include <stdio.h>
 
 static int		ft_validation(int fd, int ret, char *buff)
 {

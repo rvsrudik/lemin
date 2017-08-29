@@ -19,5 +19,6 @@ int main()
 
 	input = ft_read_input();
 	ft_check_input(input);
-return (0);
+
+	while (1);
 }

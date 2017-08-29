@@ -235,14 +235,11 @@ char    **ft_convert_way_to_names(int *shortest_way_by_index, int **way_info, ch
 
     while (i < size)
     {
-
         shortest_way_by_names[i] = rooms[shortest_way_by_index[i]];
-		printf("%s ", shortest_way_by_names[i]);
         i++;
     }
 
 
-//    printf("\n");
     return shortest_way_by_names;
 
 }
@@ -253,20 +250,23 @@ void ft_print_params(int num_of_ants, char **rooms, char **links, char **print_r
 
 	i = 0;
 
-	printf("%d\n", num_of_ants);
+	ft_putnbr(num_of_ants);
+	write(1, "\n", 1);
 
 	while (print_rooms[i] != 0)
 	{
-		printf("%s\n", print_rooms[i]);
+		write(1, print_rooms[i], ft_strlen(print_rooms[i]));
+		write(1, "\n", 1);
 		i++;
 	}
 	i = 0;
 	while (links[i] != 0)
 	{
-		printf("%s\n", links[i]);
+		write(1, links[i], ft_strlen(links[i]));
+		write(1, "\n", 1);
 		i++;
 	}
-	printf("\n");
+	write(1, "\n", 1);
 
 }
 

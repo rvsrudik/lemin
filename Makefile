@@ -42,6 +42,7 @@ SRC = main.c \
         ft_create_matrix.c \
         ft_find_way.c \
         ft_print_way.c \
+        help_func/ft_putnbr.c \
 
 
 OBJ = main.o \
@@ -74,6 +75,7 @@ OBJ = main.o \
         ft_create_matrix.o \
         ft_find_way.o \
         ft_print_way.o \
+        help_func/ft_putnbr.o \
 
 CC = gcc
 INC = -Iincludes
