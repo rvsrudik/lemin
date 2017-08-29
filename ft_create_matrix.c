@@ -35,10 +35,10 @@ void ft_print_matrix(int **matrix, int numb_of_rooms)
         k = 0;
         while (k <= numb_of_rooms)
         {
-            printf("%d ", matrix[i][k]);
+//            printf("%d ", matrix[i][k]);
             k++;
         }
-        printf("\n");
+//        printf("\n");
         i++;
     }
 }

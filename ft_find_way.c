@@ -240,12 +240,36 @@ char    **ft_convert_way_to_names(int *shortest_way_by_index, int **way_info, ch
         i++;
     }
 
-    printf("\n");
+
+//    printf("\n");
     return shortest_way_by_names;
 
 }
 
-void        ft_find_way(int num_of_ants, char **rooms, char **links, int **matrix)
+void ft_print_params(int num_of_ants, char **rooms, char **links, char **print_rooms)
+{
+	int i;
+
+	i = 0;
+
+	printf("%d\n", num_of_ants);
+
+	while (print_rooms[i] != 0)
+	{
+		printf("%s\n", print_rooms[i]);
+		i++;
+	}
+	i = 0;
+	while (links[i] != 0)
+	{
+		printf("%s\n", links[i]);
+		i++;
+	}
+	printf("\n");
+
+}
+
+void        ft_find_way(int num_of_ants, char **rooms, char **links, int **matrix, char **print_rooms)
 {
     int     **way_info;
     int     *shortest_way_by_index;
@@ -257,6 +281,12 @@ void        ft_find_way(int num_of_ants, char **rooms, char **links, int **matri
     shortest_way_by_index = ft_determ_shortest_way(way_info, rooms);
 
     shortest_way_by_names = ft_convert_way_to_names(shortest_way_by_index, way_info, rooms);
+
+
+	ft_print_params(num_of_ants, rooms, links, print_rooms);
+
+
+
 
     ft_print_way(shortest_way_by_names, num_of_ants, way_info[1][1]);
 

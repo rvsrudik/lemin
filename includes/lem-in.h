@@ -12,6 +12,7 @@
 char 	**ft_read_input();
 void	ft_error(void);
 void 	ft_check_input(char **input);
+int		ft_determ_number_of_rooms(char **input);
 int		count_str_array(char **input);
 int ft_find_number_of_ants(char **input);
 int ft_is_comment(char *line);
@@ -28,7 +29,7 @@ void ft_free_str_array(char **line);
 int     **ft_create_matrix(char **rooms, char **links);
 int     ft_count_rooms(char **rooms);
 void ft_print_matrix(int **matrix, int numb_of_rooms);
-void ft_find_way(int num_of_ants, char **rooms, char **links, int **matrix);
+void ft_find_way(int num_of_ants, char **rooms, char **links, int **matrix, char **print_rooms);
 void ft_print_way(char    **shortest_way_by_names, int num_of_ants, int way_len);
 
 

@@ -12,7 +12,7 @@
 
 #include "includes/lem-in.h"
 
-static int		ft_determ_number_of_rooms(char **input)
+int		ft_determ_number_of_rooms(char **input)
 {
 	int		i;
 	int		rooms;

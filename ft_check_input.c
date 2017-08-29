@@ -175,15 +175,47 @@ void ft_is_start_end_exist(char **input)
 
 }
 
+char **ft_find_print_rooms(char **input)
+{
+	char	**print_rooms;
+	int		i;
+	int		k;
+	int		rooms;
+	i = 0;
+	k = 0;
+	rooms = ft_determ_number_of_rooms(input);
+
+	print_rooms = (char**)malloc(sizeof(char*) * (rooms + 3));
+	print_rooms[rooms + 2] = 0;
+
+//	printf(">>>>%d\n", rooms);
+	while (input[i] != 0)
+	{
+		if (ft_is_start(input[i], input[i+1]) || ft_is_end(input[i], input[i+1]) || ft_is_rooms(input[i]))
+		{
+			print_rooms[k] = ft_strnew(ft_strlen(input[i]));
+			print_rooms[k] = ft_strcpy(print_rooms[k], input[i]);
+			k++;
+		}
+		i++;
+	}
+
+
+	return print_rooms;
+}
+
 void			ft_check_input(char **input)
 {
 	int		num_of_ants;
 	char	**rooms;
 	char	**links;
     int     **matrix;
+	char	**print_rooms;
+
 
 	num_of_ants = ft_find_number_of_ants(input);
     ft_is_links_exist(input);
+	print_rooms = ft_find_print_rooms(input);
     ft_is_start_end_exist(input);
 	rooms = ft_find_rooms(input);
 	links = ft_find_links(input);
@@ -195,7 +227,7 @@ void			ft_check_input(char **input)
 
 	ft_free_str_array(input);
 
-    ft_find_way(num_of_ants, rooms, links, matrix);
+    ft_find_way(num_of_ants, rooms, links, matrix, print_rooms);
 
 //	ft_free_str_array(links);
 //	ft_free_str_array(rooms);
@@ -234,6 +266,16 @@ void			ft_check_input(char **input)
 //	}
 
 
+		i = 0;
+
+//	printf("///////////////////\n");
+//
+//	while (print_rooms[i] != 0)
+//	{
+//		printf("%s\n", print_rooms[i]);
+//		i++;
+//	}
+//	printf("///////////////////\n");
 
 //    ft_print_matrix(matrix, ft_count_rooms(rooms));
 }
