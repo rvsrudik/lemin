@@ -43,6 +43,7 @@ SRC = main.c \
         ft_find_way.c \
         ft_print_way.c \
         help_func/ft_putnbr.c \
+        ft_new_int_int_array.c \
 
 
 OBJ = main.o \
@@ -76,6 +77,7 @@ OBJ = main.o \
         ft_find_way.o \
         ft_print_way.o \
         help_func/ft_putnbr.o \
+        ft_new_int_int_array.o \
 
 CC = gcc
 INC = -Iincludes

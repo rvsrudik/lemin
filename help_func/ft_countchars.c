@@ -19,8 +19,6 @@ int		ft_countchars(char *str, char c)
 
 	conut_char = 0;
 	i = 0;
-
-
 	while (str[i] != '\0')
 	{
 		if (str[i] == c)
@@ -29,6 +27,5 @@ int		ft_countchars(char *str, char c)
 		}
 		i++;
 	}
-
 	return (conut_char);
 }

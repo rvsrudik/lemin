@@ -1,1 +1,1 @@
-CMakeLists.txt not found in /Users/Vitalii/Desktop/Unit/projects/C/lemin
+CMakeLists.txt not found in /nfs/2016/v/vrudenko/projects/c/lemin

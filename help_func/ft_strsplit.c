@@ -12,7 +12,7 @@
 
 #include "../includes/lem-in.h"
 
-int		ft_countsplit(char *str, char c)
+int			ft_countsplit(char *str, char c)
 {
 	char	*temp;
 	int		count;
@@ -31,7 +31,7 @@ int		ft_countsplit(char *str, char c)
 	return (count);
 }
 
-char	*ft_runchar(char *str, char c)
+char		*ft_runchar(char *str, char c)
 {
 	char *tmp;
 
@@ -43,7 +43,7 @@ char	*ft_runchar(char *str, char c)
 	return (tmp);
 }
 
-char	*ft_runstr(char *str, char c)
+char		*ft_runstr(char *str, char c)
 {
 	char	*tmp;
 

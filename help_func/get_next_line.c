@@ -46,7 +46,6 @@ static int		ft_facepalm(char **line, char *fresh)
 {
 	*line = fresh;
 	return (1);
-
 }
 
 static char		*ft_setbuff(char *buff, int fd, int *ret)

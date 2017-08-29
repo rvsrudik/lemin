@@ -6,7 +6,7 @@
 #include "libft.h"
 #include <unistd.h>
 #include "get_next_line.h"
-g
+
 char		**ft_read_input();
 void		ft_error(void);
 void		ft_check_input(char **input);
@@ -29,5 +29,6 @@ int			ft_count_rooms(char **rooms);
 void		ft_print_matrix(int **matrix, int numb_of_rooms);
 void		ft_find_way(int num_of_ants, char **rooms, char **links, int **matrix, char **print_rooms);
 void		ft_print_way(char    **shortest_way_by_names, int num_of_ants, int way_len);
+int			*ft_new_int_array(int size, int num_of_ants, int way_len);
 void		ft_free_matrix(int **matrix, int x);
 #endif
