@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/lem-in.h"
+#include "includes/lemin.h"
 
-static int ft_check_max_int(char *number)
+static int	ft_check_max_int(char *number)
 {
 	if (ft_strlen(number) > 10)
 	{
@@ -55,5 +55,5 @@ int			ft_find_number_of_ants(char **input)
 		else
 			ft_error();
 	}
-	return 0;
+	return (0);
 }

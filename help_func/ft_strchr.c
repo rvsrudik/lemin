@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/lem-in.h"
+#include "../includes/lemin.h"
 
 char	*ft_strchr(const char *s, int c)
 {

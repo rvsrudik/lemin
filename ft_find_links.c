@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/lem-in.h"
+#include "includes/lemin.h"
 
 static int		ft_determ_number_of_links(char **input)
 {
@@ -21,7 +21,8 @@ static int		ft_determ_number_of_links(char **input)
 	links = 0;
 	while (input[i] != 0)
 	{
-		if (ft_is_start(input[i], input[i + 1]) || ft_is_end(input[i], input[i + 1]))
+		if (ft_is_start(input[i], input[i + 1])
+		|| ft_is_end(input[i], input[i + 1]))
 			i++;
 		else if (ft_is_comment(input[i]))
 			i++;
@@ -60,7 +61,7 @@ static void		ft_norm_one(int *i, int *k, char **links, char **input)
 	(*i)++;
 }
 
-char **ft_find_links(char **input)
+char			**ft_find_links(char **input)
 {
 	int		i;
 	char	**links;

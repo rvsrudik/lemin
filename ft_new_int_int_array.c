@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/lem-in.h"
+#include "includes/lemin.h"
 
 int			*ft_new_int_array(int size, int num_of_ants, int way_len)
 {

@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/lem-in.h"
+#include "includes/lemin.h"
 
-int main()
+int		main(void)
 {
 	char	**input;
 

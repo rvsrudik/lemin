@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/lem-in.h"
+#include "../includes/lemin.h"
 
 int			ft_countsplit(char *str, char c)
 {

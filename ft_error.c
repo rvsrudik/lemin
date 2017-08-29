@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/lem-in.h"
+#include "includes/lemin.h"
 
-void ft_error(void)
+void	ft_error(void)
 {
 	ft_putstr("ERROR\n");
 	exit(0);

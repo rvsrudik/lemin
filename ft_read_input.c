@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/lem-in.h"
+#include "includes/lemin.h"
 
 int		count_str_array(char **input)
 {
@@ -32,7 +32,7 @@ void	ft_free_old_array(char **input)
 	int		i;
 
 	i = 0;
-	while(input[i] != 0)
+	while (input[i] != 0)
 	{
 		free(input[i]);
 		i++;
@@ -41,7 +41,7 @@ void	ft_free_old_array(char **input)
 	free(input);
 }
 
-char	**ft_add_line(char** input, char* line)
+char	**ft_add_line(char **input, char *line)
 {
 	int		count_lines;
 	int		i;
@@ -58,7 +58,8 @@ char	**ft_add_line(char** input, char* line)
 	while (i < count_lines + 2)
 		new_input[i++] = 0;
 	i = 0;
-	while (i < count_lines){
+	while (i < count_lines)
+	{
 		new_input[i] = ft_strnew(ft_strlen(input[i]));
 		new_input[i] = ft_strcpy(new_input[i], input[i]);
 		i++;
@@ -69,7 +70,7 @@ char	**ft_add_line(char** input, char* line)
 	return (new_input);
 }
 
-char	**ft_read_input()
+char	**ft_read_input(void)
 {
 	char	*line;
 	char	**input;
@@ -88,5 +89,5 @@ char	**ft_read_input()
 	{
 		ft_error();
 	}
-	return input;
+	return (input);
 }

@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/lem-in.h"
+#include "includes/lemin.h"
 
-int		ft_determ_number_of_rooms(char **input)
+int				ft_determ_number_of_rooms(char **input)
 {
 	int		i;
 	int		rooms;
@@ -21,7 +21,8 @@ int		ft_determ_number_of_rooms(char **input)
 	rooms = 0;
 	while (!ft_is_links(input[i]))
 	{
-		if (ft_is_start(input[i], input[i + 1]) || ft_is_end(input[i], input[i + 1]))
+		if (ft_is_start(input[i], input[i + 1])
+		|| ft_is_end(input[i], input[i + 1]))
 			i++;
 		else if (ft_is_comment(input[i]))
 			i++;
@@ -38,20 +39,15 @@ int		ft_determ_number_of_rooms(char **input)
 
 static char		*ft_add_room(char *src, char *dst)
 {
-	int letters;
-	char **line;
+	int		letters;
+	char	**line;
 
 	line = ft_strsplit(dst, ' ');
-
 	letters = ft_strlen(line[0]);
-
 	src = ft_strnew(letters);
-
 	src = ft_strcpy(src, line[0]);
 	dst[0] = '#';
-
 	ft_free_str_array(line);
-
 	return (src);
 }
 
@@ -62,7 +58,7 @@ static void		ft_norm_two(int *i, int *k, char **rooms, char **input)
 	{
 		if (!rooms[1])
 		{
-			rooms[1] =	ft_add_room(rooms[1], input[*i]);
+			rooms[1] = ft_add_room(rooms[1], input[*i]);
 		}
 		else
 		{
@@ -72,7 +68,6 @@ static void		ft_norm_two(int *i, int *k, char **rooms, char **input)
 	}
 }
 
-
 static void		ft_norm_one(int *i, int *k, char **rooms, char **input)
 {
 	if (ft_is_start(input[*i], input[*i + 1]))
@@ -81,10 +76,10 @@ static void		ft_norm_one(int *i, int *k, char **rooms, char **input)
 		if (ft_is_rooms(input[*i]))
 		{
 			if (!rooms[0])
-				rooms[0] =	ft_add_room(rooms[0], input[*i]);
+				rooms[0] = ft_add_room(rooms[0], input[*i]);
 			else
 			{
-				rooms[*k] =	ft_add_room(rooms[*k], input[*i]);
+				rooms[*k] = ft_add_room(rooms[*k], input[*i]);
 				(*k)++;
 			}
 		}
